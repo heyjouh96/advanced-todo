@@ -19,6 +19,7 @@ const initialState = {
       title: 'Done',
     },
   ],
+  bgColor: '#ff3b30',
 }
 
 export function DashboardContextProvider({ children }) {

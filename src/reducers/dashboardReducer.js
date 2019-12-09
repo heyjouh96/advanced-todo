@@ -1,8 +1,11 @@
 export default function dashboardReducer(state, action) {
   const actions = {
-    add: state,
+    changeBg: {
+      ...state,
+      bgColor: action.payload,
+    },
     default: state,
   }
   
-  return [ ...actions[action.type] || actions.default ];
+  return { ...actions[action.type] || actions.default };
 };

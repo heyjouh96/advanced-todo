@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { TasksContextProvider } from '../../contexts/tasks.context';
 import { DashboardContext } from '../../contexts/dashboard.context';
@@ -17,14 +17,16 @@ function Panel({ columns }) {
 
   const { state } = useContext(DashboardContext);
 
+  const renderColumns = useMemo(() => state.columns.map(column => <Column key={column.id} {...column}/>), [columns]);
+
   return (
     <TasksContextProvider>
-      <PanelContainer>
+      <PanelContainer bgColor={state.bgColor}>
         <h1>Dashboard</h1>
 
         <ColumnsContainer>
 
-          {state.columns.map(column => <Column {...column}/>)}
+          {renderColumns}
         
         </ColumnsContainer>
       </PanelContainer>

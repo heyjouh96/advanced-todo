@@ -5,7 +5,7 @@ export const ColumnContainer = styled.div`
   height: 780px;
   padding: 12px;
   box-sizing: border-box;
-  background: #eaeaea;
+  background: rgba(255, 255, 255, 0.7);
   margin-right: 10px;
   overflow-y: scroll;
 `;
