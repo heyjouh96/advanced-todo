@@ -1,18 +1,13 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import './App.css';
 
-import tasksReducer from './reducers/tasksReducer';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
 
-  const [state, dispatch] = useReducer(tasksReducer, []);
-
   return (
     <div className="App">
-      <h1 onClick={() => dispatch({ type: 'add' })}>Dashboard</h1>
-
-
-      {state.map(item => <p key={item.id}>{item.id}</p>)}
+      <Dashboard />
     </div>
   );
 }

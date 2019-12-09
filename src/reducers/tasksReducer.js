@@ -2,12 +2,10 @@ export default function tasksReducer(state, action) {
   const actions = {
     add: [
       ...state,
-      {
-        id: Date.now(),
-        title: '',
-        description: '',
-        status: 1,
-      }
+      action.payload,
+    ],
+    filter: [
+      ...state.filter(item => item.status === action.payload)
     ],
     default: state,
   }
