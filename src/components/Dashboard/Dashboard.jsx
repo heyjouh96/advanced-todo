@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { DashboardContextProvider } from '../../contexts/dashboard.context';
+import { DashboardContext } from '../../contexts/dashboard.context';
 
 import Panel from '../Panel/Panel';
 import Options from '../Options/Options';
@@ -12,16 +12,16 @@ import {
 
 function Dashboard() {
 
+  const { state } = useContext(DashboardContext);
+
   return (
-    <DashboardContextProvider>
-      <DashboardContainer>
-          
-        <Panel />
+    <DashboardContainer>
+        
+      <Panel columns={state.columns} bgColor={state.bgColor} />
 
-        <Options />
+      <Options />
 
-      </DashboardContainer>
-    </DashboardContextProvider>
+    </DashboardContainer>
   );
 }
 

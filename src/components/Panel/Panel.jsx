@@ -1,8 +1,6 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 import { TasksContextProvider } from '../../contexts/tasks.context';
-import { DashboardContext } from '../../contexts/dashboard.context';
-
 
 import Column from './children/Column/Column';
 import Modal from './children/Modal/Modal';
@@ -13,23 +11,32 @@ import {
   ColumnsContainer,
 } from './styles';
 
-function Panel({ columns }) {
+function Panel({ columns, bgColor }) {
 
-  const { state } = useContext(DashboardContext);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const renderColumns = useMemo(() => state.columns.map(column => <Column key={column.id} {...column}/>), [columns]);
+  const modalHandler = () => setModalVisible(!modalVisible);
+
+  const renderColumn = useMemo(() => (
+    <ColumnsContainer>
+      {columns.map(column => <Column key={column.id} {...column} propagateModal={modalHandler} />)}
+    </ColumnsContainer>
+  ), [columns]);
 
   return (
     <TasksContextProvider>
-      <PanelContainer bgColor={state.bgColor}>
+      <PanelContainer bgColor={bgColor}>
         <h1>Dashboard</h1>
 
-        <ColumnsContainer>
-
-          {renderColumns}
+        {renderColumn}
         
-        </ColumnsContainer>
       </PanelContainer>
+
+      { modalVisible
+        ? <Modal propagateClose={modalHandler} />
+        : null
+      }
+      
     </TasksContextProvider>
   );
 }
