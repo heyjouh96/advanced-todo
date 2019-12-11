@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 
-export const OptionsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 100vh;
-  background: #eaeaea;
-  padding: 12px;
-  box-sizing: border-box;
+export const ColorsContainer = styled.div`
+
 `;
 
 export const ColorsGrid = styled.div`

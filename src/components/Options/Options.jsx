@@ -1,29 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { DashboardContext } from '../../contexts/dashboard.context';
+import Colors from './children/Colors/Colors';
+import Activities from './children/Activities/Activities';
 
 // styles
 import {
   OptionsContainer,
-  ColorsGrid,
-  ColorCard,
 } from './styles';
 
 function Options() {
-
-  const { dispatch } = useContext(DashboardContext);
-
-  const changeBgColor = color => dispatch({ type: 'changeBg', payload: color });
 
   return (
     <OptionsContainer>
       <h2>Options</h2>
 
-      <ColorsGrid>
-        <ColorCard bgColor="#ff3b30" onClick={() => changeBgColor('#ff3b30')} />
-        <ColorCard bgColor="#007bff" onClick={() => changeBgColor('#007bff')} />
-        <ColorCard bgColor="#34c759" onClick={() => changeBgColor('#34c759')} />
-      </ColorsGrid>
+      <Colors />
+
+      <Activities />
+
     </OptionsContainer>
   );
 }

@@ -20,6 +20,13 @@ const initialState = {
     },
   ],
   bgColor: '#ff3b30',
+  lastActivities: [
+    {
+      id: Date.now(),
+      type: 'add',
+      taskId: 1576090612437,
+    }
+  ],
 }
 
 export function DashboardContextProvider({ children }) {
